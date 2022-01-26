@@ -1,0 +1,41 @@
+<div class="container">
+
+    
+<div class="login">
+    
+    <form class="custom-form"  [formGroup]="form" (ngSubmit)="login()">
+        <div class="row">
+            <div class="col-12 form-group">
+                <h1>Datos de ingreso</h1>
+            </div>
+            <div class="col-12 form-group">
+                <input
+                class="form-control background-gray"
+                  type="email"
+                  formControlName="user"
+                  name="user"
+                  placeholder="Usuario"
+                  required="required"
+                />
+            </div>
+            <div class="col-12 form-group">
+                <input
+                class="form-control background-gray"
+                  type="password"
+                  formControlName="password"
+                  name="password"
+                  placeholder="Contraseña"
+                  required="required"
+                />
+            </div>
+            <div class="col-12 form-group text-center">
+                <button class="btn btn-lg btn-success" type="submit" >Iniciar sesion</button>
+
+            </div>
+        </div>
+      
+      
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <div class="container">
+
+    <div class="row form-group">
+      <div class="col-sm-6">
+        <h1>Configuración</h1>
+      </div>
+    </div>
+
+    <div class="row bg-success" *ngIf="showSuccess">
+      
+      <div  class="col-10 ">
+        <span class="label text-light" >Operación completada.</span>
+      </div>
+      <div  class="col-2 text-right">
+        <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
+      </div>
+    </div>
+
+    <div class="row bg-danger" *ngIf="showError" >
+      <div  class="col-10 ">
+        <span class="label text-light" ><p>{{messageError}}</p></span>
+      </div>
+      <div  class="col-2 text-right">
+        <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="saveConfig()">
+
+      <div class="row" *ngIf="showAccount">
+        
+        <div class="col-sm-12 background-gray">
+          <p *ngIf="!accounts"><em>Cargando sucursales...</em></p>
+          <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="accounts">
+            <thead>
+              <tr>
+                <th>Sucursales</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let account of accounts">
+                <td> <input id="rb{{account.idAccounts}}" type="radio"  value="{{account.idAccounts}}--{{account.name}}" formControlName="idAccounts"/> <span> {{account.name }}  </span> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-12">
+          <button (click)="showHideAccount()">Seleccionar</button>
+        </div>
+
+      </div>
+
+      <div class="row" *ngIf="!showAccount">
+        <div class="col-sm-5">
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <label class="control-label">Sucursal:</label>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control background-gray" [(ngModel)]="nameAccount" [ngModelOptions]="{standalone: true}"/>
+            </div>
+            <div class="col-sm-3 text-rigth">
+              <button class="btn btn-small btn-light" (click)="showAccountDiv()">...</button>
+              <a href="/cad-agencia" class="btn btn-small btn-light ">+</a>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <label class="control-label">comentarios:</label>
+            </div>
+            <div class="col-sm-9">
+              <input class="form-control background-gray" formControlName="comment"/>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-sm-3">
+              <label class="control-label">Usuarios:</label>
+            </div>
+            <div class="col-sm-9 background-gray">
+              <div class="row ">
+                <div class="col-sm-12 background-gray">
+                  <p *ngIf="!users"><em>Cargando usuarios...</em></p>
+                  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="users">
+                    <thead>
+                      <tr>
+                        <th>Usuario</th>
+                        <th>Armar alarma</th>
+                        <th>Desarmar alarma</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr *ngFor="let user of users">
+                        <td> {{user.name}} </td>
+                        <td> <input id="rba{{user.idUsers}}" type="checkbox"  value="{{user.idUsers}}"  (change)="ActivateAlarmChange($event)"/> </td>
+                        <td> <input id="rbd{{user.idUsers}}" type="checkbox"  value="{{user.idUsers}}"   (change)="DisableAlarmChange($event)"/> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-1 col-xs-12">
+
+        </div>
+
+        <div class="col-sm-6">
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6 text-rigth">
+              <input type="submit" class="btn btn-small btn-success " value="Guardar"/>
+              <a href="/list-config" class="btn btn-small btn-light ">Cancelar</a>
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-sm-12 background-gray">
+              <p *ngIf="!times"><em>Cargando Horas...</em></p>
+              <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="times">
+                <thead>
+                  <tr>
+                    <th>Hora</th>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mie</th>
+                    <th>Jue</th>
+                    <th>Vie</th>
+                    <th>Sab</th>
+                    <th>Dom</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let time of times">
+                    <td> {{time}} </td>
+                    <td> <input id="rbM{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeMo($event)" /> </td>
+                    <td> <input id="rbT{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeTu($event)" /> </td>
+                    <td> <input id="rbW{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeWe($event)" /> </td>
+                    <td> <input id="rbTH{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeTh($event)" /> </td>
+                    <td> <input id="rbF{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeFr($event)" /> </td>
+                    <td> <input id="rbS{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeSa($event)" /> </td>
+                    <td> <input id="rbSU{{time}}" type="checkbox"  value="{{time}}" (change)="hoursChangeSu($event)" /> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

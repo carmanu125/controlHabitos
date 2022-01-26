@@ -1,0 +1,34 @@
+<h1 id="tableLabel">Festivos</h1>
+
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6 text-rigth">
+        <div class="row">
+            <div class="col-9">
+                <input class="form-control background-gray" placeholder="Buscar..."/>
+            </div>
+            <div class="col-3">
+                <a href="/cad-feriado" class="btn btn-small btn-light ">Nuevo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="!holidays"><em>Cargando datos...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="holidays">
+  <thead>
+    <tr>
+      <th scope="col-5">Fecha</th>
+      <th scope="col-5">Descripcion</th>
+      <th scope="col-2">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let holiday of holidays">
+      <td>{{ holiday.date }}</td>
+      <td>{{ holiday.description }}</td>
+      <td><a href="/cad-feriado?Ak={{holiday.idCalendarr}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <a href="/cad-feriado" class="btn btn-small btn-light "><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>

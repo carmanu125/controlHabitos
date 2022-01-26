@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <div class="container">
+
+    <div class="row form-group">
+      <div class="col-sm-6">
+        <h1>Cadastro de Cargo</h1>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="savePost()">
+
+      <div class="row bg-success" *ngIf="showSuccess">
+      
+        <div  class="col-10 ">
+          <span class="label text-light" >Operación completada.</span>
+        </div>
+        <div  class="col-2 text-right">
+          <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
+        </div>
+      </div>
+  
+      <div class="row bg-danger" *ngIf="showError" >
+        <div  class="col-10 ">
+          <span class="label text-light" >Error, la operación no se completo.</span>
+        </div>
+        <div  class="col-2 text-right">
+          <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <label class="control-label">Descripción:</label>
+            </div>
+            <div class="col-sm-9">
+              <input class="form-control background-gray" formControlName="description" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+
+          <div class="row form-group">
+            <div class="col-sm-7">
+            </div>
+            <div class="col-sm-4">
+              <input type="submit" class="btn btn-small btn-success " value="Guardar"/>
+              <a class="btn btn-small btn-light ">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+</body>
+</html>

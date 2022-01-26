@@ -1,0 +1,31 @@
+<h1 id="tableLabel">Sucursales</h1>
+
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6 text-rigth">
+        <div class="row">
+            <div class="col-9">
+                <input class="form-control background-gray" placeholder="Buscar..."/>
+            </div>
+            <div class="col-3">
+                <a href="/cad-config" class="btn btn-small btn-light ">Nuevo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="!config"><em>Cargando datos...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="config">
+  <thead>
+    <tr>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conf of config">
+      <td>{{ conf.comments }}</td>
+      <td><a href="/cad-config?Ak={{conf.idSettings}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <a href="/cad-agencia" class="btn btn-small btn-light "><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>

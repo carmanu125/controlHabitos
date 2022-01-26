@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexagon.Col.Si.Bancolombia.ControleHabitos", "Hexagon.Col.Si.Bancolombia.ControleHabitos\Hexagon.Col.Si.Bancolombia.ControleHabitos.csproj", "{4A4D052C-F9C1-4AA2-8DEB-C3CB74E0E8EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A4D052C-F9C1-4AA2-8DEB-C3CB74E0E8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4D052C-F9C1-4AA2-8DEB-C3CB74E0E8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4D052C-F9C1-4AA2-8DEB-C3CB74E0E8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4D052C-F9C1-4AA2-8DEB-C3CB74E0E8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B087D0A1-4327-46FE-B663-0E88DD5B4ABC}
+	EndGlobalSection
+EndGlobal

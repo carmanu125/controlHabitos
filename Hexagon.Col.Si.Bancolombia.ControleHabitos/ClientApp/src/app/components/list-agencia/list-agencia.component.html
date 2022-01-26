@@ -1,0 +1,40 @@
+<h1 id="tableLabel">Sucursales</h1>
+
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6 text-rigth">
+        <div class="row">
+            <div class="col-9">
+                <input class="form-control background-gray" placeholder="Buscar..."/>
+            </div>
+            <div class="col-3">
+                <a href="/cad-agencia" class="btn btn-small btn-light ">Nuevo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="!accounts"><em>Cargando datos...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="accounts">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Agencia</th>
+      <th scope="col">Numero</th>
+      <th scope="col">Municipio</th>
+      <th scope="col">Departamento</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.code }}</td>
+      <td>{{ account.name }}</td>
+      <td>{{ account.accountNumber }}</td>
+      <td>{{ account.mun }}</td>
+      <td>{{ account.state }}</td>
+      <td><a href="/cad-agencia?Ak={{account.idAccounts}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <a href="/cad-agencia?Ak={{account.idAccounts}}" class="btn btn-small btn-light "><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>

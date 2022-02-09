@@ -25,6 +25,7 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<hxgn_Calendar>>> Gethxgn_Calendar()
         {
+
             return await _context.hxgn_Calendar.ToListAsync();
         }
 
@@ -48,7 +49,7 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Puthxgn_Calendar(int id, hxgn_Calendar hxgn_Calendar)
         {
-            if (id != hxgn_Calendar.idCalendarr)
+            if (id != hxgn_Calendar.idCalendar)
             {
                 return BadRequest();
             }
@@ -80,20 +81,12 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Controllers
         [HttpPost]
         public async Task<ActionResult<hxgn_Calendar>> Posthxgn_Calendar(hxgn_Calendar hxgn_Calendar)
         {
-            try
-            {
-                hxgn_Calendar.CreationDate = DateTime.Now;
-                _context.hxgn_Calendar.Add(hxgn_Calendar);
-                await _context.SaveChangesAsync();
 
-            }
-            catch(Exception e)
-            {
+            hxgn_Calendar.CreationDate = DateTime.Now;
+            _context.hxgn_Calendar.Add(hxgn_Calendar);
+            await _context.SaveChangesAsync();
 
-            }
-
-
-            return CreatedAtAction("Gethxgn_Calendar", new { id = hxgn_Calendar.idCalendarr }, hxgn_Calendar);
+            return CreatedAtAction("Gethxgn_Calendar", new { id = hxgn_Calendar.idCalendar }, hxgn_Calendar);
         }
 
         // DELETE: api/Calendar/5
@@ -114,7 +107,7 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Controllers
 
         private bool hxgn_CalendarExists(int id)
         {
-            return _context.hxgn_Calendar.Any(e => e.idCalendarr == id);
+            return _context.hxgn_Calendar.Any(e => e.idCalendar == id);
         }
     }
 }

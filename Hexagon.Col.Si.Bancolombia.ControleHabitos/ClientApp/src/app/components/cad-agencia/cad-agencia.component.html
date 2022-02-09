@@ -9,141 +9,199 @@
 <body>
   <div class="container">
 
-    <div class="row form-group">
-      <div class="col-sm-6">
-        <h1>Registro de sucursal / ATM</h1>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Registro de sucursal / ATM</h5>
       </div>
-    </div>
+      <div class="card-body">
 
-    <div class="row bg-success" *ngIf="showSuccess">
-      
-      <div  class="col-10 ">
-        <span class="label text-light" >Operación completada.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
-      </div>
-    </div>
 
-    <div class="row bg-danger" *ngIf="showError" >
-      <div  class="col-10 ">
-        <span class="label text-light" >Error, la operación no se completo.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
-      </div>
-    </div>
+        <div class="row bg-success" *ngIf="showSuccess">
 
-    <form [formGroup]="form" (ngSubmit)="saveAgencia()">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="row form-group" *ngIf="false">
-            <div class="col-sm-3">
-              <label class="control-label">id:</label>
-            </div>
-            <div class="col-sm-9">
-              <input  [disabled]="true" class="form-control background-gray" [(ngModel)]="idAccount" [ngModelOptions]="{standalone: true}"  />
-              <input [disabled]="true" class="form-control background-gray" [(ngModel)]="creationDate" [ngModelOptions]="{standalone: true}"  />
-            </div>
+          <div class="col-10 ">
+            <span class="label text-light">Operación completada.</span>
           </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Código:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="code" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Sucursal:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="name" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Numero cuenta:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="accountNumber" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Ciudad:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="mun" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Departamento:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="state" />
-            </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
           </div>
         </div>
-        <div class="col-sm-6">
 
-          <div class="row form-group">
-            <div class="col-sm-4">
-            </div>
-            <div class="col-sm-8 text-right">
-              <input type="submit" class="btn btn-small btn-success " [disabled]="form.invalid" value="Guardar" />
-              <a href="/list-agencia" class="btn btn-small btn-light "><i class="fa fa-chevron-left" aria-hidden="true"></i> Cancelar</a>
-            </div>
+        <div class="row bg-danger" *ngIf="showError">
+          <div class="col-10 ">
+            <span class="label text-light">
+              <p>{{messageError}}</p>
+            </span>
           </div>
-
-          <div class="row form-group">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-9 text-right">
-              <label class="control-label">Registro Activo : </label>
-
-              <input type="checkbox" formControlName="isActive" />
-            </div>
-            <div class="col-sm-3">
-              <label class="control-label">Latitud:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="latitude" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Longitud:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="longitude" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Dirección:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="location" />
-            </div>
-          </div>
-
-        </div>
-        <div class="col-sm-12">
-
-          <div class="row form-group">
-            <div class="col-sm-2">
-              <label class="control-label">Observaciones:</label>
-            </div>
-            <div class="col-sm-10 ">
-              <textarea formControlName="comments" name="Text1" class="background-gray" cols="120" rows="5"></textarea>
-            </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
           </div>
         </div>
+
+        <form [formGroup]="form" (ngSubmit)="saveAgencia()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row form-group" *ngIf="false">
+                <div class="col-sm-3">
+                  <label class="control-label">id:</label>
+                </div>
+                <div class="col-sm-9">
+                  <input [disabled]="true" class="form-control " [(ngModel)]="idAccount"
+                    [ngModelOptions]="{standalone: true}" />
+                  <input [disabled]="true" class="form-control " [(ngModel)]="creationDate"
+                    [ngModelOptions]="{standalone: true}" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Código:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-barcode"></i>
+                    </div>
+                  </div>
+                  <input class="form-control" formControlName="code" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Sucursal:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-university"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="name" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">N° cuenta:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="accountNumber" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" />
+                </div>
+              </div>
+              <div class="row form-group ">
+                <div class="col-sm-3">
+                  <label class="control-label">Ciudad:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-building"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="mun" aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Departamento:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-building"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="state" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+
+              <div class="row form-group">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-8 text-right">
+                  <button type="submit" class="btn btn-small btn-primary " [disabled]="form.invalid"  ><i class="fa fa-database"></i> Guardar</button>
+                  <a href="/list-agencia" class="btn btn-small btn-light "><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i> Cancelar</a>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Activo :</label>
+                </div>
+                <div class="col-sm-9 ">
+
+                  <input type="checkbox" formControlName="isActive" />
+
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Latitud:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-map"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="latitude" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Longitud:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-map"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="longitude" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Dirección:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-globe"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="location" />
+                </div>
+              </div>
+
+            </div>
+            <div class="col-sm-12">
+
+              <div class="row form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Observaciones:</label>
+                </div>
+                <div class="col-sm-10 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <textarea formControlName="comments" name="Text1" cols="100" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </body>
 

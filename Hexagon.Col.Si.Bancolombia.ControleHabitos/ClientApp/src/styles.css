@@ -1,23 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+
+
+
+/*input.ng-touched.ng-invalid{
+    border-color:#dc3545;
+}
+
+textarea.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
 a {
   color: #0366d6;
 }
 
 code {
   color: #e01a76;
+}*/
+
+.text-white{
+  color: #fff;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #539eee;
+  border-color: #4c9ef5;
+  box-sizing: border-box;
+  font-size: 13px;
+  min-height: 30px;
 }
-input.ng-touched.ng-invalid{
-    border-color:#dc3545;
+.btn.btn-primary:disabled{
+  background-color: #a8c3df;
+  border-color: #9bb4cf;
+
 }
 
-textarea.ng-touched.ng-invalid {
-  border-color: #dc3545;
+h3 {
+  font-size: 32px;
+  margin: 1rem 0 2rem;
+}
+
+.btn-light{
+  background: #F7F7F7;
+  border: 1px solid #AFAFAF;
+  box-sizing: border-box;
+  font-size: 13px;
+  min-height: 30px;
+}
+
+.btn-1 {
+  display: flex;
+  align-items: center;
+  background: #F7F7F7;
+  border: 1px solid #AFAFAF;
+  box-sizing: border-box;
+  cursor: pointer;
+  min-height: 30px;
+  font-size: 13px;
+  margin: 5px;
+  padding: 0 1rem;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.flex-justify-start {
+  justify-content: flex-start;
+}
+
+input, select, button, textarea {
+  transition: border-color 100ms, box-shadow 100ms ease-in-out;
+}
+
+.control-label{
+  font-size: 16px;
+}
+
+.form-control{
+  border-radius: 0px;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
 }

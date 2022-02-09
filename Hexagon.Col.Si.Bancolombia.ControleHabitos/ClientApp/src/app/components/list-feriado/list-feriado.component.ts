@@ -28,4 +28,15 @@ export class ListFeriadoComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteFeriado(name: string, id:number) {
+    if(confirm("¿Esta seguro que desea eliminar este registro ?  "+name)) {
+      this.calendarService.deleteCalendar(this.url_base+ "api/Calendar/"+id).subscribe(result => {
+        console.log(result);
+        window.location.reload();
+        
+      }, error => console.error(error));
+  
+    }
+  }
+
 }

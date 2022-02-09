@@ -33,4 +33,18 @@ export class ListAgenciaComponent implements OnInit {
     
   }
 
+  deleteCurrent(name: string, id:number) {
+    if(confirm("¿Esta seguro que desea eliminar este registro ?  "+name)) {
+      this.agenciaService.deleteAccount(this.url_base+ "api/Account/"+id).subscribe(result => {
+        console.log(result);
+        window.location.reload();
+        
+      }, error => {
+        console.error(error)
+        
+      });
+  
+    }
+  }
+
 }

@@ -7,7 +7,7 @@ export class hxgn_Users{
     isActive?:boolean;
     creationDate?:Date;
     creationUser?:number;
-    login:string;
-    password:string;
+    login?:string;
+    password?:string;
 
 }

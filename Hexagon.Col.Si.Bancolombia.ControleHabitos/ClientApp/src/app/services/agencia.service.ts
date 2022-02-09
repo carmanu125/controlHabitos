@@ -29,4 +29,8 @@ export class AgenciaService {
   updateAgencia(account:hxgn_accountsMode, url:string):Observable<hxgn_accountsMode>{
     return this.http.put<hxgn_accountsMode>(url, account);
   }
+  deleteAccount(url:string):Observable<hxgn_accountsMode>{
+    console.log(url);
+    return this.http.delete<hxgn_accountsMode>(url);
+  }
 }

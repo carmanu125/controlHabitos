@@ -27,4 +27,10 @@ export class SettingsService {
   updateSetting(Settings:hxgn_Settings, url:string):Observable<hxgn_Settings>{
     return this.http.put<hxgn_Settings>(url, Settings);
   }
+
+  deleteSetting(url:string):Observable<hxgn_Settings>{
+    console.log(url);
+    return this.http.delete<hxgn_Settings>(url);
+  }
+  
 }

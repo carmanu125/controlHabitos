@@ -1,14 +1,18 @@
-<h1 id="tableLabel">Festivos</h1>
+
 
 <div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-6 text-rigth">
+    <div class="col-md-6">
+      <div class="col-12">
+        <h3 id="tableLabel">Festivos</h3>
+      </div>
+    </div>
+    <div class="col-md-6 ">
         <div class="row">
-            <div class="col-9">
+            <div class="col-9 text-rigth">
                 <input class="form-control background-gray" placeholder="Buscar..."/>
             </div>
             <div class="col-3">
-                <a href="/cad-feriado" class="btn btn-small btn-light ">Nuevo</a>
+                <a href="/cad-feriado" class="btn btn-small btn-light fa fa-plus-circle"> Nuevo</a>
             </div>
         </div>
     </div>
@@ -16,7 +20,7 @@
 
 <p *ngIf="!holidays"><em>Cargando datos...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="holidays">
+<table class='table table-striped table-sm' aria-labelledby="tableLabel" *ngIf="holidays">
   <thead>
     <tr>
       <th scope="col-5">Fecha</th>
@@ -28,7 +32,7 @@
     <tr *ngFor="let holiday of holidays">
       <td>{{ holiday.date }}</td>
       <td>{{ holiday.description }}</td>
-      <td><a href="/cad-feriado?Ak={{holiday.idCalendarr}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <a href="/cad-feriado" class="btn btn-small btn-light "><i class="fa fa-trash"></i></a></td>
+      <td><a href="/cad-feriado?Ak={{holiday.idCalendar}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <button (click)="deleteFeriado(holiday.description,holiday.idCalendar)" class="btn btn-small btn-light "><i class="fa fa-trash"></i></button></td>
     </tr>
   </tbody>
 </table>

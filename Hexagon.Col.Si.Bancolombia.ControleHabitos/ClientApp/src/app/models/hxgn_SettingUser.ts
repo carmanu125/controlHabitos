@@ -6,6 +6,6 @@ export class  hxgn_SettingUser{
     isDisarm: boolean;
     isActive?: boolean;
     creationDate?: Date;
-    creationUser?: number = 2 ;
+    creationUser?: number;
 
 }

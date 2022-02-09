@@ -12,8 +12,10 @@ import { AgenciaService } from 'src/app/services/agencia.service';
 export class CadAgenciaComponent implements OnInit{
 
   showError:boolean = false;
+  messageError:string;
   showSuccess:boolean = false;
   showID:boolean = false;
+  sessionIDCurrent:number= 0;
   
   idAccount: number;
   creationDate:Date;
@@ -39,6 +41,12 @@ export class CadAgenciaComponent implements OnInit{
       isActive:['',[Validators.required]]
       
     })
+    // let sessionCurrent = localStorage.getItem('currentUserK');
+    // if(sessionCurrent != null){
+    //   this.sessionIDCurrent = + localStorage.getItem('currentUserK');
+    // }else{
+    //   this.showErrorMessage("¡Sesion no iniciada!");
+    // }
   }
 
   hideErrorMessage(){
@@ -48,9 +56,15 @@ export class CadAgenciaComponent implements OnInit{
     this.showSuccess = false;
   }
 
+  showErrorMessage(message:string){
+    this.showError = true;
+    this.messageError = message;
+  }
+
   saveAgencia( ) {
     //console.log(this.form);
     const accountsMode : hxgn_accountsMode = {
+      idAccounts : this.idAccount,     
       code: this.form.get('code').value,
       name: this.form.get('name').value,
       accountNumber: this.form.get('accountNumber').value,
@@ -67,22 +81,22 @@ export class CadAgenciaComponent implements OnInit{
     console.log(accountsMode);
 
     if(this.showID){
-      accountsMode.idAccounts = this.idAccount;
       accountsMode.creationDate = this.creationDate;
       this.agenciaService.updateAgencia(accountsMode, this.url_base + "api/Account/"+this.idAccount).subscribe(result => {
         console.log(result);
         this.clearValues();
       }, error => {
         console.error(error)
-        this.showError=true;
+        this.showErrorMessage("Error en la operacion...");
       });
     }else{
+      accountsMode.creationUser = this.sessionIDCurrent;
       this.agenciaService.saveAgencia(accountsMode, this.url_base + "api/Account/").subscribe(result => {
         console.log(result);
         this.clearValues();
       }, error => {
         console.error(error)
-        this.showError=true;
+        this.showErrorMessage("Error al guardar los datos...");
       });
     }
   }

@@ -8,112 +8,134 @@
 
 <body>
   <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Registro de Usuario</h5>
+      </div>
+      <div class="card-body">
 
-    <div class="row form-group">
-      <div class="col-sm-6">
-        <h1>Registro de Usuario</h1>
-      </div>
-    </div>
+        <div class="row bg-success" *ngIf="showSuccess">
 
-    <div class="row bg-success" *ngIf="showSuccess">
-      
-      <div  class="col-10 ">
-        <span class="label text-light" >Operación completada.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
-      </div>
-    </div>
-
-    <div class="row bg-danger" *ngIf="showError" >
-      <div  class="col-10 ">
-        <span class="label text-light" >Error, la operación no se completo.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
-      </div>
-    </div>
-    
-    <form [formGroup]="form" (ngSubmit)="saveUser()">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="row ">
-            <div class="col-sm-3">
-              <label class="control-label">Nombre completo:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="name" />
-            </div>
+          <div class="col-10 ">
+            <span class="label text-light">Operación completada.</span>
           </div>
-
-          <div class="row ">
-            <div class="col-sm-3">
-              <label class="control-label">Cargo de usuario:</label>
-            </div>
-            <div class="col-sm-7">
-              <input class="form-control background-gray" formControlName="idPost" />
-            </div>
-            <div class="col-sm-1">
-              <a class="btn btn-small btn-secondary ">...</a>
-            </div>
-            <div class="col-sm-1">
-              <a class="btn btn-small btn-secondary ">+</a>
-            </div>
-          </div>
-
-          <div class="row ">
-            <div class="col-sm-3">
-              <label class="control-label">Partición:</label>
-            </div>
-            <div class="col-sm-9 background-gray">
-              <p *ngIf="!partitions"><em>Cargando particiones...</em></p>
-              <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="partitions">
-                <thead>
-                  <tr>
-                    <th>Particiones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let partition of partitions">
-                    <td> <input id="rb{{partition.idPartition}}" type="radio" value="{{partition.idPartition}}"
-                        formControlName="idPartitionn" /> <span> {{partition.description }}</span> </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
           </div>
         </div>
 
-        <div class="col-sm-6">
-
-          <div class="row form-group">
-            <div class="col-sm-6">
-            </div>
-            <div class="col-sm-6">
-              <input type="submit" class="btn btn-small btn-success " value="Guardar" />
-              <a class="btn btn-small btn-light ">Cancelar</a>
-            </div>
+        <div class="row bg-danger" *ngIf="showError">
+          <div class="col-10 ">
+            <span class="label text-light">Error, la operación no se completo.</span>
           </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Usuario login:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="login" />
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Contraseña:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" type="password" formControlName="password" />
-            </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
           </div>
         </div>
-      </div>
-    </form>
 
+        <form [formGroup]="form" (ngSubmit)="saveUser()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Nombre:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control background-gray" formControlName="name" />
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Cargo:</label>
+                </div>
+                <div class="col-sm-7 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="idPost" />
+                </div>
+                <div class="col-sm-1">
+                  <a class="btn btn-small btn-light "><i class="fa fa-search"></i></a>
+                </div>
+                <div class="col-sm-1">
+                  <a class="btn btn-small btn-light  "><i class="fa fa-plus"></i></a>
+                </div>
+              </div>
+
+              <div class="row ">
+                <div class="col-sm-3">
+                  <label class="control-label">Partición:</label>
+                </div>
+                <div class="col-sm-9 background-gray">
+                  <p *ngIf="!partitions"><em>Cargando particiones...</em></p>
+                  <table class='table table-striped table-sm table-bordered' aria-labelledby="tableLabel"
+                    *ngIf="partitions">
+                    <thead>
+                      <tr>
+                        <th>Particiones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let partition of partitions">
+                        <td> <input id="rb{{partition.idPartition}}" type="radio" value="{{partition.idPartition}}"
+                            formControlName="idPartitionn" /> <span> {{partition.description }}</span> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+
+              <div class="row form-group">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-small btn-primary " [disabled]="form.invalid"><i
+                      class="fa fa-database"></i> Guardar</button>
+                  <a class="btn btn-small btn-light "><i class="fa fa-chevron-left" aria-hidden="true"></i> Cancelar</a>
+                </div>
+              </div>
+              <!-- <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Usuario login:</label>
+                </div>
+                <div class="col-sm-9  input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control background-gray" formControlName="login" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Contraseña:</label>
+                </div>
+                <div class="col-sm-9  input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control background-gray" type="password" formControlName="password" />
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </body>
 

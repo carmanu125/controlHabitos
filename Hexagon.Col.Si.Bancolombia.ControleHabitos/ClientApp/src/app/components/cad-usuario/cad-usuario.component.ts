@@ -33,9 +33,9 @@ export class CadUsuarioComponent implements OnInit{
 
       name:['',[Validators.required]],
       idPost:['',[Validators.required]],
-      idPartitionn:['',[Validators.required]],
-      login:['',[Validators.required]],
-      password:['',[Validators.required]]
+      idPartitionn:['',[Validators.required]]
+      // login:['',[Validators.required]],
+      // password:['',[Validators.required]]
       
     })
 
@@ -53,9 +53,9 @@ export class CadUsuarioComponent implements OnInit{
     const userModel : hxgn_Users = {
       idPartitionn: this.form.get('idPartitionn').value,
       idPost: this.form.get('idPost').value,
-      name: this.form.get('name').value,
-      login: this.form.get('login').value,
-      password: this.form.get('password').value
+      name: this.form.get('name').value
+      // login: this.form.get('login').value,
+      // password: this.form.get('password').value
 
     }
 
@@ -105,9 +105,9 @@ export class CadUsuarioComponent implements OnInit{
       this.form.setValue({
         idPartitionn: new FormControl(result.idPartitionn.toString()),
         idPost:result.idPost,
-        name:result.name,
-        login:result.login,
-        password:result.password
+        name:result.name
+        // login:result.login,
+        // password:result.password
       });
     }, error => console.error(error));
 

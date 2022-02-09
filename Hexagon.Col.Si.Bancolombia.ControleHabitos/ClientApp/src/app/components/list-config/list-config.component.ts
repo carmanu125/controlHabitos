@@ -35,4 +35,15 @@ export class ListConfigComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteCurrent(name: string, id:number) {
+    if(confirm("¿Esta seguro que desea eliminar este registro ?  "+ name)) {
+      this.settingsService.deleteSetting(this.url_base+ "api/Settings/"+id).subscribe(result => {
+        console.log(result);
+        window.location.reload();
+        
+      }, error => console.error(error));
+  
+    }
+  }
+
 }

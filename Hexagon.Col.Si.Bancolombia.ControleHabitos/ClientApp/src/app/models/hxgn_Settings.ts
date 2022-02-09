@@ -7,7 +7,7 @@ export class  hxgn_Settings{
     comments:string;
     isActive?:boolean;
     creationDate?:Date;
-    creationUser?: number = 2 ;
+    creationUser?: number;
 
     settingTime?:hxgn_SettingTime[];
     settingUser?:hxgn_SettingUser[];

@@ -11,7 +11,7 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Model
         [Key]
         public int idUsers { get; set; }
         public int idPost { get; set; }
-        public int idPartitionn { get; set; }
+        public int idPartition { get; set; }
         public string Name { get; set; }
         public bool isActive { get; set; }
         public DateTime CreationDate { get; set; }

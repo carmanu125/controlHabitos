@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+  <meta charset="utf-8" />
+  <title></title>
 </head>
+
 <body>
   <div class="container">
 
-    <div class="row form-group">
-      <div class="col-sm-6">
-        <h1>Registro de festivos</h1>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Registro de festivos</h5>
       </div>
-    </div>
+      <div class="card-body">
 
-    <div class="row bg-success" *ngIf="showSuccess">
-      
-      <div  class="col-10 ">
-        <span class="label text-light" >Operación completada.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
-      </div>
-    </div>
+        <div class="row bg-success" *ngIf="showSuccess">
 
-    <div class="row bg-danger" *ngIf="showError" >
-      <div  class="col-10 ">
-        <span class="label text-light" >Error, la operación no se completo.</span>
-      </div>
-      <div  class="col-2 text-right">
-        <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
-      </div>
-    </div>
-
-    <form [formGroup]="form" (ngSubmit)="saveCalendar()">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Fecha del festivo:</label>
-            </div>
-            <div class="col-sm-9">
-              <input  class="form-control background-gray" type="date" formControlName="date"/>
-            </div>
+          <div class="col-10 ">
+            <span class="label text-light">Operación completada.</span>
           </div>
-          <div class="row form-group">
-            <div class="col-sm-3">
-              <label class="control-label">Descripcion:</label>
-            </div>
-            <div class="col-sm-9">
-              <input class="form-control background-gray" formControlName="description" />
-            </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideSuccessMessage()">X</button>
           </div>
         </div>
 
-        <div class="col-sm-6">
-
-          <div class="row form-group">
-            <div class="col-sm-4">
-            </div>
-            <div class="col-sm-8 text-right">
-              <input class="btn btn-small btn-success" value="Guardar" type="submit"/>
-              <a href="/list-feriado" class="btn btn-small btn-light ">Cancelar</a>
-            </div>
+        <div class="row bg-danger" *ngIf="showError">
+          <div class="col-10 ">
+            <span class="label text-light">Error, la operación no se completo.</span>
+          </div>
+          <div class="col-2 text-right">
+            <button class="btn btn-link text-light btn-sm" (click)="hideErrorMessage()">X</button>
           </div>
         </div>
+
+        <form [formGroup]="form" (ngSubmit)="saveCalendar()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Fecha:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " type="date" formControlName="date" />
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Descripcion:</label>
+                </div>
+                <div class="col-sm-9 input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                      <i class="fa fa-list-alt"></i>
+                    </div>
+                  </div>
+                  <input class="form-control " formControlName="description" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+
+              <div class="row form-group">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-8 text-right ">
+                  <button class="btn btn-small btn-primary" [disabled]="form.invalid" type="submit" ><i class="fa fa-database"></i> Guardar</button>
+                  <a href="/list-feriado" class="btn btn-small btn-light "><i class="fa fa-chevron-left"
+                    aria-hidden="true"></i> Cancelar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
 
 
   </div>
 </body>
+
 </html>

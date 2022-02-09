@@ -1,14 +1,18 @@
-<h1 id="tableLabel">Particiones</h1>
+
 
 <div class="row">
-    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="col-12">
+        <h3 id="tableLabel">Particiones</h3>
+      </div>
+    </div>
     <div class="col-md-6 text-rigth">
         <div class="row">
             <div class="col-9">
                 <input class="form-control background-gray" placeholder="Buscar..."/>
             </div>
             <div class="col-3">
-                <a href="/cad-partition" class="btn btn-small btn-light ">Nuevo</a>
+                <a href="/cad-partition" class="btn btn-small btn-light fa fa-plus-circle"> Nuevo</a>
             </div>
         </div>
     </div>
@@ -16,7 +20,7 @@
 
 <p *ngIf="!partitions"><em>Cargando datos...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="partitions">
+<table class='table table-striped table-sm' aria-labelledby="tableLabel" *ngIf="partitions">
   <thead>
     <tr>
       <th colspan="0">Descripcion</th>
@@ -26,7 +30,7 @@
   <tbody>
     <tr *ngFor="let partition of partitions">
       <td colspan="0">{{ partition.description }}</td>
-      <td ><a href="/cad-partition?Ak={{partition.idPartition}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <a href="/cad-agencia" class="btn btn-small btn-light "><i class="fa fa-trash"></i></a></td>
+      <td ><a href="/cad-partition?Ak={{partition.idPartition}}" class="btn btn-small btn-light "><i class="fa fa-edit"></i></a> <button (click)="deleteCurrent(partition.description,partition.idPartition)" class="btn btn-small btn-light "><i class="fa fa-trash"></i></button></td>
     </tr>
   </tbody>
 </table>

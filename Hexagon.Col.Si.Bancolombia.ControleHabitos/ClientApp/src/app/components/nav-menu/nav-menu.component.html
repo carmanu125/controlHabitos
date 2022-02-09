@@ -1,11 +1,11 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="nav navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 "
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">Control Habitos</a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler text-white"
         type="button"
         data-toggle="collapse"
         data-target=".navbar-collapse"
@@ -13,36 +13,39 @@
         [attr.aria-expanded]="isExpanded"
         (click)="toggle()"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon "></span>
       </button>
       <div
         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
         [ngClass]="{ show: isExpanded }"
       >
-        <ul class="navbar-nav flex-grow">
+        <ul class="navbar-nav flex-grow ">
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/list-feriado']">Registro festivos</a>
+            <a class="nav-link text-white" [routerLink]="['/']">Festivos</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/list-cargo']">Registro Cargos</a>
+            <a class="nav-link text-white" [routerLink]="['/list-cargo']">Cargos</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/list-partition']">Registro Particiones</a>
+            <a class="nav-link text-white" [routerLink]="['/list-partition']">Particiones</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/list-user']">Registro Usuario</a>
+            <a class="nav-link text-white" [routerLink]="['/list-user']">Usuario</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/list-agencia']">Registro Sucursal</a>
+            <a class="nav-link text-white" [routerLink]="['/list-agencia']">Sucursal</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/list-config']">Configuraciones</a>
+            <a class="nav-link text-white" [routerLink]="['/list-config']">Configuraciones</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" >{{userName}}</a>
+          <!-- <li *ngIf="isLogin" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-white" [routerLink]="['/loguot']">{{usernameCurrent}} Cerrar</a>
           </li>
+          <li *ngIf="!isLogin" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-white" [routerLink]="['/login']">iniciar Sesion</a>
+          </li> -->
         </ul>
       </div>
     </div>

@@ -27,4 +27,9 @@ export class PartitionService {
   updatePartition(Partition:hxgn_Partition, url:string):Observable<hxgn_Partition>{
     return this.http.put<hxgn_Partition>(url, Partition);
   }
+
+  deletePartition(url:string):Observable<hxgn_Partition>{
+    console.log(url);
+    return this.http.delete<hxgn_Partition>(url);
+  }
 }

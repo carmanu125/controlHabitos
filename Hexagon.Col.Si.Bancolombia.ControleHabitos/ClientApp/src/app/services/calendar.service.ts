@@ -27,4 +27,9 @@ export class CalendarService {
   updateCalendar(calendar:hxgn_Calendar, url:string):Observable<hxgn_Calendar>{
     return this.http.put<hxgn_Calendar>(url, calendar);
   }
+
+  deleteCalendar(url:string):Observable<hxgn_Calendar>{
+    console.log(url);
+    return this.http.delete<hxgn_Calendar>(url);
+  }
 }

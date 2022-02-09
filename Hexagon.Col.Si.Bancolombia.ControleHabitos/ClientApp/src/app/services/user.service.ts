@@ -48,4 +48,9 @@ export class UserService {
     // return this.utils.getCookie(this.utils.key_user_id);
   }
 
+  deleteUser(url:string):Observable<hxgn_Users>{
+    console.log(url);
+    return this.http.delete<hxgn_Users>(url);
+  }
+
 }

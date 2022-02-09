@@ -106,9 +106,18 @@ namespace Hexagon.Col.Si.Bancolombia.ControleHabitos.Controllers
             {
                 return NotFound();
             }
+            try
+            {
+                _context.hxgn_Accounts.Remove(hxgn_Accounts);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
 
-            _context.hxgn_Accounts.Remove(hxgn_Accounts);
-            await _context.SaveChangesAsync();
+            }
+            
+
+            
 
             return hxgn_Accounts;
         }

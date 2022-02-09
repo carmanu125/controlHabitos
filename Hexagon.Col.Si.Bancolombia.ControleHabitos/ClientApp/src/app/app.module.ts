@@ -24,6 +24,7 @@ import { ListParticaoComponent } from './components/list-particao/list-particao.
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { ListConfigComponent } from './components/list-config/list-config.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -47,7 +48,8 @@ import { LoginComponent } from './components/login/login.component';
     ListParticaoComponent,
     ListUserComponent,
     ListConfigComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,9 +70,10 @@ import { LoginComponent } from './components/login/login.component';
       { path: 'list-cargo', component:  ListCargoComponent},
       { path: 'list-config', component:  ListConfigComponent},
       { path: 'list-partition', component:  ListParticaoComponent},
-      { path: 'list-feriado', component:  ListFeriadoComponent},
+      { path: '', component:  ListFeriadoComponent},
       { path: 'list-user', component:  ListUserComponent},
-      { path: '', component:  LoginComponent, pathMatch: 'full'},
+      { path: 'loguot', component:  LogoutComponent},
+      { path: 'login', component:  LoginComponent, pathMatch: 'full'},
 
     ])
   ],

@@ -6,6 +6,6 @@ export class  hxgn_SettingTime{
     endTime: string;
     isActive?: boolean;
     creationDate?: Date;
-    creationUser?: number = 2 ;
+    creationUser?: number;
 
 }

@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
       console.log(result);
       if(result.idUsers != 0){
 
-        this.userService.setUserCookie(result.name,result.idUsers.toString());
+        localStorage.setItem('currentUser', result.name);
+        localStorage.setItem('currentUserK', result.idUsers.toString());
+        //this.userService.setUserCookie(result.name,result.idUsers.toString());
         window.location.href = "/home";
       }
     }, error => console.error(error));
@@ -47,6 +49,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let usernameCurrent = localStorage.getItem('currentUser');
+    console.log("Nombre: " + usernameCurrent);
+
+    if(usernameCurrent != undefined){
+      window.location.href = "/home";
+    }
   }
 
 }

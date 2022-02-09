@@ -27,4 +27,9 @@ export class PostService {
     return this.http.put<hxgn_Post>(url, Post);
   }
 
+  deletePost(url:string):Observable<hxgn_Post>{
+    console.log(url);
+    return this.http.delete<hxgn_Post>(url);
+  }
+
 }

@@ -1,7 +1,7 @@
 export class hxgn_Calendar {
-    idCalendarr?: number;
+    idCalendar?: number;
     description: string;
-    date: Date;
+    date: string;
     isActive?: boolean;
     creationDate?: Date;
     creationUser?: number;

@@ -38,14 +38,25 @@ export class CadFeriadoComponent implements OnInit{
 
   saveCalendar( ) {
     //console.log(this.form);
+
+    let currentDate = new Date(this.form.get('date').value);
+
+    let dd = String(currentDate.getDate() + 1).padStart(2, '0');
+    let mm = String(currentDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = currentDate.getFullYear();
+
+    let dateFormat =  yyyy + '/' +dd + '/' + mm ;
+
+    console.log(dateFormat);
+    
     const calendarModel : hxgn_Calendar = {
-      date: new Date(this.form.get('date').value),
-      description: this.form.get('description').value,
-      creationUser:2
+      date: dateFormat,
+      description: this.form.get('description').value
+      // creationUser:2
     }
 
     if(this.showID){
-      calendarModel.idCalendarr = this.idAccount;
+      calendarModel.idCalendar = this.idAccount;
       calendarModel.creationDate = this.creationDate;
       this.calendarService.updateCalendar(calendarModel, this.url_base + "api/Calendar/"+this.idAccount).subscribe(result => {
         console.log(result);
@@ -58,7 +69,7 @@ export class CadFeriadoComponent implements OnInit{
 
       this.calendarService.saveCalendar(calendarModel, this.url_base + "api/Calendar/").subscribe(result => {
         console.log(result);
-        window.location.href = '/list-feriado';
+        window.location.href = '/';
       }, error => console.error(error));
     }
   }
@@ -74,7 +85,7 @@ export class CadFeriadoComponent implements OnInit{
     this.form.reset();
     this.showSuccess=true;
     if(this.showID){
-      window.location.href = "/list-feriado";
+      window.location.href = "/";
       this.showID = false;
       this.idAccount = 0;
     }
